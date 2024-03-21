@@ -1,0 +1,24 @@
+…or create a new repository on the command line
+…или создайте новый репозиторий в командной строке
+
+echo "# SQLite3" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M pythonProject_bot_help
+git remote add origin https://github.com/Seregka78/SQLite3.git
+git push -u origin pythonProject_bot_help
+
+
+
+…or push an existing repository from the command line
+…или отправить существующий репозиторий из командной строки
+
+git remote add origin https://github.com/Seregka78/SQLite3.git
+git branch -M pythonProject_bot_help
+git push -u origin pythonProject_bot_help
+
+
+…or import code from another repository
+…или импортируйте код из другого репозитория
+You can initialize this repository with code from a Subversion, Mercurial, or TFS project.
