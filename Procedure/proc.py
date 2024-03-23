@@ -50,7 +50,7 @@ def All_print_consol(connect):
 def ADD_colum(connect, name_colum):
     cursor = connect.cursor()
     cursor.execute(f'''ALTER TABLE car ADD COLUMN {name_colum}''')
-    print('добавили колонку', name_colum)
+    print('добавили колонку\n', name_colum)
     cursor.close()
 
 
@@ -64,23 +64,23 @@ def corect_info(connect):
         names = [fields[1] for fields in desc]              #выбираем первые элементы из списка
         print(names)
         resultat=cursor.execute(f''' SELECT * FROM car where id={id_info}''')
-        print('Выводим выбранную строку', resultat.fetchall())
-        SMS=str(input('Выберите имя столбца  для корректировки или EXT-для выхода'))
+        print('Выводим выбранную строку\n', resultat.fetchall())
+        SMS=str(input('Выберите имя столбца  для корректировки или EXT-для сохранения изменений и выхода\n'))
 
         if SMS=='EXT':
             break
         else:
-            SMS_info = str(input('На какое значение поменять'))
+            SMS_info = str(input('На какое значение поменять\n'))
             SMS_X=0
             for i in names:
                 if SMS == i:
-                    print('вы выбрали имя столбца для коректировки\n', i, '\n', 'хотите поменять на следующее значение', SMS_info)
+                    print('вы выбрали имя столбца для коректировки\n', i, '\n', 'хотите поменять на следующее значение ', SMS_info)
                     print(id_info)
                     cursor.execute(f'''UPDATE car SET {i} = ? WHERE id=?''', (SMS_info, id_info))
                     # cursor.execute(f"""UPDATE car set {i} = {SMS_info} WHERE id={id_info}""")
-                    print('Выводим результат', resultat.fetchall())
+                    print('Выводим результат\n', resultat.fetchall())
                     SMS_X+=1
-            if SMS_X==0: print('Повторите попытку')
+            if SMS_X==0: print('Повторите попытку\n')
             #cursor.execute('UPDATE Users SET age = ?       WHERE username = ?',    (29, 'newuser'))
             #cursor.execute('UPDATE users SET user_status=? WHERE id=?',            ('normal',id))
         #INSERT INTO users (name, age) VALUES ('Tom', 22);
@@ -89,3 +89,4 @@ def corect_info(connect):
         #"""Update sqlitedb_developers set salary = 10000 where id = 4"""
 
     cursor.close()
+    connect.commit()
