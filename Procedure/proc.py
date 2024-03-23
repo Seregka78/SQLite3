@@ -77,14 +77,10 @@ def corect_info(connect):
                     print('вы выбрали имя столбца для коректировки\n', i, '\n', 'хотите поменять на следующее значение ', SMS_info)
                     print(id_info)
                     cursor.execute(f'''UPDATE car SET {i} = ? WHERE id=?''', (SMS_info, id_info))
-                    print('Выводим результат после изменений\n', resultat)
+                    # resultat = cursor.execute(f''' SELECT * FROM car where id={id_info}''').fetchall()
+                    # print('Выводим результат после изменений\n', resultat)
                     SMS_X+=1
             if SMS_X==0: print('Повторите попытку\n')
-            #cursor.execute('UPDATE Users SET age = ?       WHERE username = ?',    (29, 'newuser'))
-            #cursor.execute('UPDATE users SET user_status=? WHERE id=?',            ('normal',id))
-        #INSERT INTO users (name, age) VALUES ('Tom', 22);
-        #обновление инфо в строке: UPDATE work SET person = "tae" WHERE person = "tay";
-        #UPDATE имя_таблицы SET имя_столбца = новое_значение WHERE условие
-        #"""Update sqlitedb_developers set salary = 10000 where id = 4"""
+
 
     cursor.close()
