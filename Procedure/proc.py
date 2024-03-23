@@ -63,8 +63,8 @@ def corect_info(connect):
         desc = prnt_name.fetchall()
         names = [fields[1] for fields in desc]              #выбираем первые элементы из списка
         print(names)
-        resultat=cursor.execute(f''' SELECT * FROM car where id={id_info}''')
-        print('Выводим выбранную строку\n', resultat.fetchall())
+        resultat=cursor.execute(f''' SELECT * FROM car where id={id_info}''').fetchall()
+        print('Выводим выбранную строку\n', resultat)
         SMS=str(input('Выберите имя столбца  для корректировки или EXT-для сохранения изменений и выхода\n'))
 
         if SMS=='EXT':
@@ -77,8 +77,7 @@ def corect_info(connect):
                     print('вы выбрали имя столбца для коректировки\n', i, '\n', 'хотите поменять на следующее значение ', SMS_info)
                     print(id_info)
                     cursor.execute(f'''UPDATE car SET {i} = ? WHERE id=?''', (SMS_info, id_info))
-                    # cursor.execute(f"""UPDATE car set {i} = {SMS_info} WHERE id={id_info}""")
-                    print('Выводим результат\n', resultat.fetchall())
+                    print('Выводим результат после изменений\n', resultat)
                     SMS_X+=1
             if SMS_X==0: print('Повторите попытку\n')
             #cursor.execute('UPDATE Users SET age = ?       WHERE username = ?',    (29, 'newuser'))
@@ -89,4 +88,3 @@ def corect_info(connect):
         #"""Update sqlitedb_developers set salary = 10000 where id = 4"""
 
     cursor.close()
-    connect.commit()
