@@ -22,3 +22,6 @@ git push -u origin pythonProject_bot_help
 …or import code from another repository
 …или импортируйте код из другого репозитория
 You can initialize this repository with code from a Subversion, Mercurial, or TFS project.
+
+
+https://proglib.io/p/kak-podruzhit-python-i-bazy-dannyh-sql-podrobnoe-rukovodstvo-2020-02-27
